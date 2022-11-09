@@ -16,7 +16,5 @@ public class Customer extends User{
     @OneToMany(mappedBy = "customer")
     private List<Order> productList = new ArrayList<>();
 
-    @JsonIgnore
-    private String role = "ROLE_Customer";
 
 }

@@ -12,8 +12,11 @@ import javax.validation.constraints.Pattern;
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public abstract class User {
+
     @Id
     private String emailId;
+
+    private String mobileNumber;
 
     @NotNull
     private String name;
@@ -27,6 +30,9 @@ public abstract class User {
     @NotNull
     @JsonIgnore
     private String password;
+
+    @JsonIgnore
+    private String role;
 
 
 }

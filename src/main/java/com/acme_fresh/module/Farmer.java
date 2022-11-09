@@ -16,6 +16,4 @@ public class Farmer extends User{
     @OneToMany(mappedBy = "farmer")
     private List<Product> productList = new ArrayList<>();
 
-    @JsonIgnore
-    private String role = "ROLE_Farmer";
 }
