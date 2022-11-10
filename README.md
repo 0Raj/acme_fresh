@@ -29,6 +29,16 @@ The company provides different services such as:
 
 <br />
 
+- **TechStack**
+1. Java 8
+2. Spring Boot
+3. Spring Security(JWT Authentication)
+4. Spring Data JPA
+5. MySql
+6. Swagger
+
+<br />
+
 # Installation & Run
  - Before running the API server, you should update the database config inside the application.properties file.
 - Update the port number, username and password as per your local database configuration.
@@ -36,7 +46,12 @@ The company provides different services such as:
 ```
     server.port=8080
 
-    spring.datasource.url=jdbc:mysql://localhost:3306/walletdb;
+    spring.datasource.url=jdbc:mysql://localhost:3306/acme_fresh;
     spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
     spring.datasource.username=root
     spring.datasource.password=root
+```
+<br />
+🚀 The Swagger link to check rest Api-> http://localhost:8080/swagger-ui/
+  
+    
