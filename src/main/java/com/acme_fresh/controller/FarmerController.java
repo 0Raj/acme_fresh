@@ -1,12 +1,14 @@
 package com.acme_fresh.controller;
 
-import com.acme_fresh.module.FarmerDTO;
+import com.acme_fresh.module.UserDTO;
 import com.acme_fresh.module.ProductDTO;
 import com.acme_fresh.service.FarmerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/acme-fresh/farmer")
@@ -16,7 +18,7 @@ public class FarmerController {
     private FarmerService farmerService;
 
     @PostMapping("/register")
-    public ResponseEntity<String> addFarmer(@RequestBody FarmerDTO farmerDTO){
+    public ResponseEntity<String> addFarmer(@Valid @RequestBody UserDTO farmerDTO){
         farmerService.registerFarmer(farmerDTO);
         return new ResponseEntity<>("Farmer Added Successfully", HttpStatus.OK);
     }

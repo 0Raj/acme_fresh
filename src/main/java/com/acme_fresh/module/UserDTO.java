@@ -6,7 +6,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 
 @Data
-public class FarmerDTO {
+public class UserDTO {
 
     @Email
     private String emailId;
@@ -23,5 +23,7 @@ public class FarmerDTO {
     private Integer age;
 
     private String password;
+
+    private String address;
 
 }

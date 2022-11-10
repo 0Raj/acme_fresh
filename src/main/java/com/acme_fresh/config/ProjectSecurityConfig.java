@@ -29,8 +29,10 @@ public class ProjectSecurityConfig {
                 .authorizeHttpRequests(auth -> {
                     try {
                         auth
-                                .antMatchers(HttpMethod.POST, "/acme-fresh/farmer/register","/swagger-ui/**").permitAll()
+                                .antMatchers(HttpMethod.GET,"/swagger-ui/**","/acme-fresh/products").permitAll()
+                                .antMatchers(HttpMethod.POST,"/acme-fresh/customer/register" , "/acme-fresh/farmer/register").permitAll()
                                 .antMatchers("/acme-fresh/login").authenticated()
+                                .antMatchers("/acme-fresh/customer/**").hasAnyRole("CUSTOMER")
                                 .antMatchers(HttpMethod.POST,"/acme-fresh/farmer/product").hasAnyRole("FARMER")
                                 .antMatchers(HttpMethod.DELETE,"/acme-fresh/farmer/product").hasAnyRole("FARMER")
                                 .and().csrf().disable()

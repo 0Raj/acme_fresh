@@ -1,7 +1,9 @@
 package com.acme_fresh.module;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -10,6 +12,8 @@ import java.util.List;
 
 @Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Product{
 
     @Id
@@ -24,18 +28,9 @@ public class Product{
 
     private LocalDate uploadedDate;
 
+
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "farmer_email_id")
     private Farmer farmer;
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "productID=" + productID +
-                ", productName='" + productName + '\'' +
-                ", category=" + category +
-                ", productPrice=" + productPrice +
-                ", uploadedDate=" + uploadedDate +
-                '}';
-    }
 }

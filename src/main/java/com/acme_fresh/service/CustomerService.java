@@ -1,13 +1,18 @@
 package com.acme_fresh.service;
 
-import com.acme_fresh.module.Product;
-import com.acme_fresh.module.User;
+import com.acme_fresh.module.*;
+
+import java.util.List;
+import java.util.Map;
+
 
 public interface CustomerService {
 
-    boolean registerCustomer(User user);
-    boolean placeOrder(Integer productID);
+    boolean registerCustomer(UserDTO customerDTO);
+    Order placeOrder(Map<Integer,Integer> productMap);
 
     boolean deleteOrder(Integer orderID);
+
+    List<Product> getAllProduct();
 
 }

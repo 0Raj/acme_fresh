@@ -2,6 +2,7 @@ package com.acme_fresh.service;
 
 import com.acme_fresh.exception.NoStrongPasswordException;
 import com.acme_fresh.exception.ProductNotFound;
+import com.acme_fresh.exception.UserAlreadyExistException;
 import com.acme_fresh.module.*;
 import com.acme_fresh.repository.FarmerDAO;
 import com.acme_fresh.repository.ProductDAO;
@@ -34,7 +35,13 @@ public class FarmerServiceImpl implements FarmerService{
     private GetCurrentUser getCurrentUser;
 
     @Override
-    public boolean registerFarmer(FarmerDTO farmerDTO) {
+    public boolean registerFarmer(UserDTO farmerDTO) {
+
+       Optional<User> user = userDAO.findById(farmerDTO.getEmailId());
+
+        if(user.isPresent()){
+            throw new UserAlreadyExistException("User Already present");
+        }
 
         userDAO.save(mapToFarmer(farmerDTO));
 
@@ -102,7 +109,7 @@ public class FarmerServiceImpl implements FarmerService{
         return false;
     }
 
-    private Farmer mapToFarmer(FarmerDTO farmerDTO){
+    private Farmer mapToFarmer(UserDTO farmerDTO){
 
         Farmer farmer = new Farmer();
 
@@ -111,6 +118,7 @@ public class FarmerServiceImpl implements FarmerService{
         farmer.setName(farmerDTO.getName());
         farmer.setRole("ROLE_FARMER");
         farmer.setMobileNumber(farmerDTO.getMobileNumber());
+        farmer.setAddress(farmerDTO.getAddress());
 
         if(farmerDTO.getGender().toUpperCase().equals("M")){
             farmer.setGender(Gender.MALE);

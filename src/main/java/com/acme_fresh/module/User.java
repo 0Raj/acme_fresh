@@ -16,6 +16,10 @@ public abstract class User {
     @Id
     private String emailId;
 
+    @NotNull
+    private String address;
+
+    @NotNull
     private String mobileNumber;
 
     @NotNull
