@@ -29,8 +29,10 @@ public class ProjectSecurityConfig {
                 .authorizeHttpRequests(auth -> {
                     try {
                         auth
-                                .antMatchers(HttpMethod.POST, "/acme-fresh/farmer/register").permitAll()
-                                .antMatchers("/login","/swagger-ui/**").permitAll()
+                                .antMatchers(HttpMethod.POST, "/acme-fresh/farmer/register","/swagger-ui/**").permitAll()
+                                .antMatchers("/acme-fresh/login").authenticated()
+                                .antMatchers(HttpMethod.POST,"/acme-fresh/farmer/product").hasAnyRole("FARMER")
+                                .antMatchers(HttpMethod.DELETE,"/acme-fresh/farmer/product").hasAnyRole("FARMER")
                                 .and().csrf().disable()
                                 .logout()
                                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/end");

@@ -23,6 +23,8 @@ public class Order {
 
     private Double orderTotal;
 
+
+
     @ManyToOne
     @JoinColumn(name = "customer_MailID")
     private Customer customer;
