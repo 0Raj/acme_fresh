@@ -17,9 +17,12 @@ import java.util.Set;
 @AllArgsConstructor
 public class Customer extends User{
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "customer")
-    private Set<Order> orderList = new HashSet<>();
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "customer")
+//    private Set<Order> orderList = new HashSet<>();
+
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
+    private List<OrderConfirmation> orderConfirmationList = new ArrayList<>();
 
 
 }

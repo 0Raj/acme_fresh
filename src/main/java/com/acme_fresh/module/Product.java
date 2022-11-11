@@ -29,6 +29,7 @@ public class Product{
     private LocalDate uploadedDate;
 
 
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "farmer_email_id")
     private Farmer farmer;

@@ -1,6 +1,7 @@
 package com.acme_fresh.service;
 
 import com.acme_fresh.exception.NoStrongPasswordException;
+import com.acme_fresh.exception.ProductNotFound;
 import com.acme_fresh.exception.UserAlreadyExistException;
 import com.acme_fresh.module.*;
 import com.acme_fresh.repository.OrderDAO;
@@ -48,17 +49,35 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public Order placeOrder(Map<Integer,Integer> productMap) {
+    public OrderConfirmation placeOrder(Map<Integer,Integer> productMap) {
 
         Customer currentCustomer = (Customer) getCurrentUser.findCurrentUser();
 
-        Order currentOrder = createOrder(productMap);
+        OrderConfirmation currentOrder = createOrder(productMap);
 
-        return currentOrder;
+        return orderDAO.save(currentOrder);
     }
 
     @Override
     public boolean deleteOrder(Integer orderID) {
+
+        Customer customer = (Customer) getCurrentUser.findCurrentUser();
+
+        Optional<OrderConfirmation> orderConfirmation = orderDAO.findById(orderID);
+
+        if(orderConfirmation.isPresent()){
+            OrderConfirmation order = orderConfirmation.get();
+
+            if(order.getCustomer() == customer){
+                orderDAO.deleteById(orderID);
+            }else{
+                throw new ProductNotFound("The product is not created by you");
+            }
+        }else {
+            throw new ProductNotFound("Order not found");
+        }
+
+
         return false;
     }
 
@@ -109,8 +128,8 @@ public class CustomerServiceImpl implements CustomerService{
         return m.matches();
     }
 
-    private Order createOrder(Map<Integer,Integer> productMap){
-        Order order = new Order();
+    private OrderConfirmation createOrder(Map<Integer,Integer> productMap){
+        OrderConfirmation order = new OrderConfirmation();
 
         Customer currentCustomer = (Customer) getCurrentUser.findCurrentUser();
         order.setCustomer(currentCustomer);
@@ -125,9 +144,8 @@ public class CustomerServiceImpl implements CustomerService{
            grandTotal += productDAO.findById(set.getKey()).get().getProductPrice()*set.getValue();
        }
 
-       order.setOrderDate(LocalDate.now());
-       order.setOrderTotal(grandTotal);
-       order.setOrderQuantity(productMap.size());
+       order.setOrderedDate(LocalDate.now());
+       order.setTotal(grandTotal);
        order.setOrderStatus(OrderStatus.ACCEPTED);
 
        userDAO.save(currentCustomer);

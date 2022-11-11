@@ -9,7 +9,7 @@ import java.util.Map;
 public interface CustomerService {
 
     boolean registerCustomer(UserDTO customerDTO);
-    Order placeOrder(Map<Integer,Integer> productMap);
+    OrderConfirmation placeOrder(Map<Integer,Integer> productMap);
 
     boolean deleteOrder(Integer orderID);
 
