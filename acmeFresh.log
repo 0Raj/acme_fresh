@@ -1,0 +1,55 @@
+2022-11-11 14:11:05.329 ERROR 6652 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'logging.level.com.acmefresh' to org.springframework.boot.logging.LogLevel:
+
+    Property: logging.level.com.acmefresh
+    Value: "EXCEPTION"
+    Origin: class path resource [application.properties] - 16:32
+    Reason: failed to convert java.lang.String to org.springframework.boot.logging.LogLevel (caused by java.lang.IllegalArgumentException: No enum constant org.springframework.boot.logging.LogLevel.EXCEPTION)
+
+Action:
+
+Update your application's configuration. The following values are valid:
+
+    DEBUG
+    ERROR
+    FATAL
+    INFO
+    OFF
+    TRACE
+    WARN
+
+2022-11-11 14:11:25.954  INFO 4636 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-11-11 14:11:25.955  INFO 4636 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-11-11 14:11:27.199  INFO 4636 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-11-11 14:11:27.302  INFO 4636 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 87 ms. Found 5 JPA repository interfaces.
+2022-11-11 14:11:28.356  INFO 4636 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-11 14:11:28.372  INFO 4636 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-11 14:11:28.372  INFO 4636 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-11 14:11:28.484  INFO 4636 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-11 14:11:28.484  INFO 4636 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2528 ms
+2022-11-11 14:11:28.727  INFO 4636 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-11-11 14:11:28.799  INFO 4636 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.12.Final
+2022-11-11 14:11:29.007  INFO 4636 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-11-11 14:11:29.118  INFO 4636 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-11 14:11:29.455  INFO 4636 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-11 14:11:29.494  INFO 4636 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-11-11 14:11:30.746  INFO 4636 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-11-11 14:11:30.755  INFO 4636 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-11 14:11:31.764  WARN 4636 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-11-11 14:11:32.124  INFO 4636 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@20fcb4f9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@34834b65, org.springframework.security.web.context.SecurityContextPersistenceFilter@37620dd0, org.springframework.security.web.header.HeaderWriterFilter@23e1035, org.springframework.security.web.authentication.logout.LogoutFilter@602eb10, com.acme_fresh.filter.JwtTokenValidatorFilter@225b31dc, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@68af8893, com.acme_fresh.filter.JwtTokenGeneratorFiltor@55d8c1d8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4b7939b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@65f621, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1046ece6, org.springframework.security.web.session.SessionManagementFilter@7a04630e, org.springframework.security.web.access.ExceptionTranslationFilter@4c204f42, org.springframework.security.web.access.intercept.AuthorizationFilter@266df35d]
+2022-11-11 14:11:32.301  INFO 4636 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-11 14:11:32.659  INFO 4636 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-11 14:11:47.966  INFO 4636 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-11 14:11:47.967  INFO 4636 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-11 14:11:47.968  INFO 4636 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-11-11 14:11:48.310  WARN 4636 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.util.NoSuchElementException: No value present]
+2022-11-11 14:12:05.282  INFO 4636 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-11 14:12:05.286  INFO 4636 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-11 14:12:05.292  INFO 4636 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

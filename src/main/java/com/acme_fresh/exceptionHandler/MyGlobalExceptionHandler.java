@@ -1,5 +1,9 @@
 package com.acme_fresh.exceptionHandler;
 
+import com.acme_fresh.exception.NoStrongPasswordException;
+import com.acme_fresh.exception.ProductNotFound;
+import com.acme_fresh.exception.UserAlreadyExistException;
+import com.acme_fresh.exception.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -14,6 +18,35 @@ import java.time.LocalDateTime;
 
 @ControllerAdvice
 public class MyGlobalExceptionHandler {
+
+    @ExceptionHandler(UserAlreadyExistException.class)
+    public ResponseEntity<ExceptionMsg> userAlreadyExistException(UserAlreadyExistException exception, WebRequest request) {
+        ExceptionMsg errorDetails = new ExceptionMsg(LocalDateTime.now(), HttpStatus.BAD_REQUEST.value(),
+                exception.getMessage(), request.getDescription(false));
+
+        return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ExceptionMsg> userNotFoundException(UserNotFoundException exception, WebRequest request) {
+        ExceptionMsg errorDetails = new ExceptionMsg(LocalDateTime.now(), HttpStatus.BAD_REQUEST.value(),
+                exception.getMessage(), request.getDescription(false));
+
+        return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler(ProductNotFound.class)
+    public ResponseEntity<ExceptionMsg> productNotFound(ProductNotFound exception, WebRequest request) {
+        ExceptionMsg errorDetails = new ExceptionMsg(LocalDateTime.now(), HttpStatus.BAD_REQUEST.value(),
+                exception.getMessage(), request.getDescription(false));
+
+        return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler(NoStrongPasswordException.class)
+    public ResponseEntity<ExceptionMsg> noStrongPassword(NoStrongPasswordException exception, WebRequest request) {
+        ExceptionMsg errorDetails = new ExceptionMsg(LocalDateTime.now(), HttpStatus.BAD_REQUEST.value(),
+                exception.getMessage(), request.getDescription(false));
+
+        return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+    }
 
     @ExceptionHandler(NoHandlerFoundException.class)
     public ResponseEntity<ExceptionMsg> noHandler(NoHandlerFoundException exception, WebRequest request) {
