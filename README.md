@@ -14,7 +14,7 @@ The company provides different services such as:
 
 <br />
 
-### This is a individual project, completed with 24 hours as part of placement assignment.
+### This is a individual project, completed with 48 hours as part of placement assignment.
 
 - **Services Offered**
 1. Farmer and Customer can Login and Signup.
